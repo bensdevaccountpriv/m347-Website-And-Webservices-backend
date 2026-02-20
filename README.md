@@ -1,4 +1,4 @@
-# dockersample
+# ktor-sample
 
 This project was created using the [Ktor Project Generator](https://start.ktor.io).
 
@@ -12,9 +12,15 @@ Here are some useful links to get you started:
 
 Here's a list of features included in this project:
 
-| Name                                               | Description                                                 |
-| ----------------------------------------------------|------------------------------------------------------------- |
-| [Routing](https://start.ktor.io/p/routing-default) | Allows to define structured routes and associated handlers. |
+| Name                                                                   | Description                                                                        |
+| ------------------------------------------------------------------------|------------------------------------------------------------------------------------ |
+| [Routing](https://start.ktor.io/p/routing)                             | Provides a structured routing DSL                                                  |
+| [kotlinx.serialization](https://start.ktor.io/p/kotlinx-serialization) | Handles JSON serialization using kotlinx.serialization library                     |
+| [Content Negotiation](https://start.ktor.io/p/content-negotiation)     | Provides automatic content conversion according to Content-Type and Accept headers |
+| [Exposed](https://start.ktor.io/p/exposed)                             | Adds Exposed database to your application                                          |
+| [CORS](https://start.ktor.io/p/cors)                                   | Enables Cross-Origin Resource Sharing (CORS)                                       |
+| [Postgres](https://start.ktor.io/p/postgres)                           | Adds Postgres database to your application                                         |
+| [Status Pages](https://start.ktor.io/p/status-pages)                   | Provides exception handling for routes                                             |
 
 ## Building & Running
 
