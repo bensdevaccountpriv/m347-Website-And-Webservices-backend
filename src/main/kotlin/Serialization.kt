@@ -15,6 +15,9 @@ import org.jetbrains.exposed.sql.*
 
 fun Application.configureSerialization() {
     routing {
+        install(ContentNegotiation) {
+          json() 
+        }
         get("/json/kotlinx-serialization") {
             call.respond(mapOf("hello" to "world"))
         }
