@@ -26,7 +26,7 @@ import com.example.Commands
 fun Application.configureRouting() {
     install(StatusPages) {
         exception<Throwable> { call, cause ->
-            call.respondText(text = "500: $cause" , status = HttpStatusCode.InternalServerError)
+            call.respondText(text = "500: $cause", status = HttpStatusCode.InternalServerError)
         }
     }
     routing {
@@ -34,48 +34,48 @@ fun Application.configureRouting() {
             call.respondText("Hello World!")
         }
 
-        get("/memes") {
-          val allMemes = dbQuery {
-            // SelectAll() gets everything from the 'memes' table
-            Memes.selectAll().map {
-                Meme(
-                    id = it[Memes.id],
-                    url = it[Memes.url],
-                    alttext = it[Memes.alttext],
-                    addtext = it[Memes.addtext]
-                )
+        get("api/memes") {
+            val allMemes = dbQuery {
+                // SelectAll() gets everything from the 'memes' table
+                Memes.selectAll().map {
+                    Meme(
+                        id = it[Memes.id],
+                        url = it[Memes.url],
+                        alttext = it[Memes.alttext],
+                        addtext = it[Memes.addtext]
+                    )
+                }
             }
-          }
-        
-          // If the list is empty, it returns [], otherwise it sends the JSON
+
+            // If the list is empty, it returns [], otherwise it sends the JSON
             call.respond(allMemes)
         }
 
-get("/posts") {
-        val allPosts = dbQuery {
-            Posts.selectAll().map {
-                Post(
-                    id = it[Posts.id],
-                    headline = it[Posts.headline],
-                    text = it[Posts.text],
-                    author = it[Posts.author]
-                )
+        get("api/posts") {
+            val allPosts = dbQuery {
+                Posts.selectAll().map {
+                    Post(
+                        id = it[Posts.id],
+                        headline = it[Posts.headline],
+                        text = it[Posts.text],
+                        author = it[Posts.author]
+                    )
+                }
             }
+            call.respond(allPosts)
         }
-        call.respond(allPosts)
-    }
 
-    get("/commands") {
-        val allCommands = dbQuery {
-            Commands.selectAll().map {
-                Command(
-                    id = it[Commands.id],
-                    command = it[Commands.command],
-                    explaination = it[Commands.explaination] // Uses the SQL-matching name
-                )
+        get("api/commands") {
+            val allCommands = dbQuery {
+                Commands.selectAll().map {
+                    Command(
+                        id = it[Commands.id],
+                        command = it[Commands.command],
+                        explaination = it[Commands.explaination] // Uses the SQL-matching name
+                    )
+                }
             }
+            call.respond(allCommands)
         }
-        call.respond(allCommands)
-    }
     }
 }
